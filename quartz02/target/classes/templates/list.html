@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/static/js/bootstrap3/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/static/js/bootstrap3/css/bootstrap-theme.min.css}">
+    <script type="text/javascript" th:src="@{/static/js/bootstrap3/js/jquery-1.11.2.min.js}"></script>
+    <script type="text/javascript" th:src="@{/static/js/bootstrap3/js/bootstrap.min.js}"></script>
+    <title>列表</title>
+</head>
+<body>
+
+
+<a th:href="@{/scheduleTrigger/toEdit}">新增</a>
+<table align="center" width="600px" style="text-align: center" >
+    <thead>
+    <tr>
+
+        <td>ID</td>
+        <td>表达式</td>
+        <td>job路径</td>
+        <td>job分组</td>
+        <td>状态</td>
+        <td>操作</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="scheduleTrigger : ${scheduleTriggers}">
+        <td th:text="${scheduleTrigger.id}"></td>
+        <!--<td><img style="width: 60px;height: 60px;" id="imgshow" th:src="${scheduleTriggers.imagePath}" th:alt="${teacher.tname}"/></td>-->
+        <td th:text="${scheduleTrigger.cron}"></td>
+        <td th:text="${scheduleTrigger.job_name}"></td>
+        <td th:text="${scheduleTrigger.job_group}"></td>
+        <td th:text="${scheduleTrigger.status}"></td>
+        <td>
+            <a th:href="@{'/scheduleTrigger/del/'+${scheduleTrigger.id}}">删除</a>
+            <a th:href="@{'/scheduleTrigger/toEdit?id='+${scheduleTrigger.id}}">修改</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<nav>
+    <!--<ul class="pagination pagination-sm" th:utext="${pageBean}">-->
+    <!--</ul>-->
+
+    <!--<ul class="pagination pagination-sm">-->
+    <!--<form id='pageBeanForm' action='http://scheduleTrigger/list' method='post'><input type='hidden' name='page'></form>-->
+    <!--<li><a href='javascript:gotoPage(1)'>首页</a></li>-->
+    <!--<li class='disabled'><a href='javascript:gotoPage(1)'>上一页</a></li>-->
+    <!--<li class='active'><a href='#'>1</a></li>-->
+    <!--<li><a href='javascript:gotoPage(2)'>2</a></li>-->
+    <!--<li><a href='javascript:gotoPage(2)'>下一页</a></li>-->
+    <!--<li><a href='javascript:gotoPage(4)'>尾页</a></li>-->
+    <!--<script type='text/javascript'>	function gotoPage(page) {	document.getElementById('pageBeanForm').page.value = page; document.getElementById('pageBeanForm').submit();	}	function skipPage() {	var page = document.getElementById('skipPage').value;	if(!page || isNaN(page) || parseInt(page)<1 || parseInt(page)>4){ alert('请输入1~N的数字');	return;	}	gotoPage(page);	}</script>-->
+    <!--</ul>-->
+</nav>
+</body>
+</html>

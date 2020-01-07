@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>用户编辑界面</title>
+
+    <script type="text/javascript">
+        function preShow() {
+
+        }
+    </script>
+</head>
+<body>
+
+<form th:action="@{${scheduleTrigger.id} ? '/scheduleTrigger/edit' : '/scheduleTrigger/add'}" method="post" enctype="multipart/form-data">
+    <!--ID<input type="hidden" name="id" th:value="${scheduleTrigger.id}" />-->
+    表达式<input type="text" name="cron" th:value="${scheduleTrigger.cron}" /></br>
+    job路径<input type="text" name="job_name" th:value="${scheduleTrigger.job_name}" /></br>
+    job分组<input type="text" name="job_group" th:value="${scheduleTrigger.job_group}" /></br>
+    状态<input type="text" name="status" th:value="${scheduleTrigger.status}" /></br>
+    <input type="submit" value="提交"/>
+</form>
+
+</body>
+</html>
